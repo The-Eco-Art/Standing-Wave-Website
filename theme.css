@@ -1,0 +1,273 @@
+/* ========================================
+   THEME: Monochrome (Black & White)
+   Pure black and white only - no grays
+   Text colors remain unchanged for readability
+   ======================================== */
+
+:root {
+    /* Backgrounds - sleek off-black */
+    --color-bg: #050505;
+    --color-bg-alt: #0a0a0a;
+    --color-bg-elevated: #111111;
+
+    /* Text - brilliant crisp contrast */
+    --color-text: #ffffff;
+    --color-text-secondary: #b0b0b0;
+    --color-text-muted: #6b6b6b;
+
+    /* Borders - sleek white glass */
+    --color-border: rgba(255, 255, 255, 0.1);
+    --color-border-subtle: rgba(255, 255, 255, 0.05);
+
+    /* Accents - white */
+    --color-accent: #ffffff;
+    --color-accent-hover: rgba(255, 255, 255, 0.8);
+
+    /* Overlays - elegant white transparencies (No gray muddiness) */
+    --color-overlay: rgba(255, 255, 255, 0.03);
+    --color-overlay-hover: rgba(255, 255, 255, 0.06);
+    --color-overlay-active: rgba(255, 255, 255, 0.09);
+    --color-bg-overlay: rgba(255, 255, 255, 0.02);
+
+    /* Card backgrounds/borders - transparent glass */
+    --color-card-bg: rgba(255, 255, 255, 0.03);
+    --color-card-border: rgba(255, 255, 255, 0.1);
+    --color-card-shadow: rgba(0, 0, 0, 0.8);
+    --color-card-bg-alt: rgba(255, 255, 255, 0.05);
+    --color-card-bg-hover: rgba(255, 255, 255, 0.07);
+
+    /* Artifact/section backgrounds */
+    --color-artifact-bg: rgba(255, 255, 255, 0.02);
+    --color-artifact-bg-hover: rgba(255, 255, 255, 0.04);
+    --color-artifact-border: rgba(255, 255, 255, 0.1);
+
+    /* Axis label backgrounds */
+    --color-axis-bg: rgba(255, 255, 255, 0.05);
+    --color-axis-border: rgba(255, 255, 255, 0.1);
+
+    /* Status banner backgrounds */
+    --color-status-bg: rgba(255, 255, 255, 0.05);
+    --color-status-border: rgba(255, 255, 255, 0.1);
+    --color-status-border-strong: rgba(255, 255, 255, 0.2);
+
+    /* Mode button active background */
+    --color-mode-btn-active: rgba(255, 255, 255, 0.1);
+    --color-mode-btn-parasitic: #ff6b6b;
+    --color-mode-btn-parasitic-active: rgba(255, 107, 107, 0.15);
+    --color-mode-btn-parasitic-glow: rgba(255, 107, 107, 0.5);
+
+    /* Speed control colors */
+    --color-speed-bg: rgba(255, 255, 255, 0.05);
+    --color-speed-track: rgba(255, 255, 255, 0.2);
+
+    /* Interpretation colors */
+    --color-interpretation-bg: rgba(255, 255, 255, 0.03);
+    --color-interpretation-border: rgba(255, 255, 255, 0.1);
+    --color-interpretation-gradient-1: rgba(255, 255, 255, 0.02);
+    --color-interpretation-gradient-2: rgba(255, 255, 255, 0.05);
+
+    /* Code block colors */
+    --color-code-bg: rgba(255, 255, 255, 0.03);
+    --color-code-border: rgba(255, 255, 255, 0.1);
+
+    /* Wave pattern colors */
+    --color-wave-pattern-bg: rgba(255, 255, 255, 0.02);
+
+    /* Interpretation bg alias */
+    --color-interpretation-bg-alt: rgba(255, 255, 255, 0.03);
+
+    /* Callout colors */
+    --color-callout-bg: rgba(255, 255, 255, 0.05);
+    --color-callout-bg-alt: rgba(255, 255, 255, 0.03);
+
+    /* Modal/overlay colors - pure black */
+    --color-modal-bg: rgba(0, 0, 0, 0.9);
+
+    /* Restore section colors - green tones (unchanged) */
+    --color-restore-bg: rgba(255, 255, 255, 0.03);
+    --color-restore-text: #2ecc71;
+    --color-restore-chaotic: #1abc9c;
+    --color-restore-suppressed: #16a085;
+    --color-restore-collapse: #27ae60;
+
+    /* Mode indicator colors (unchanged) */
+    --color-mode-indicator-rigid: #ff6b6b;
+    --color-mode-indicator-chaotic: #ffb74d;
+    --color-mode-indicator-suppressed: #ffd54f;
+    --color-mode-indicator-collapse: #ff69b4;
+
+    /* Rainbow wire gradient colors (unchanged) */
+    --wire-color-1: #ff6b6b;
+    --wire-color-2: #feca57;
+    --wire-color-3: #48dbfb;
+    --wire-color-4: #ff9ff3;
+    --wire-color-5: #54a0ff;
+    --wire-color-6: #5f27cd;
+    --wire-gradient: linear-gradient(
+        135deg,
+        var(--wire-color-1),
+        var(--wire-color-2),
+        var(--wire-color-3),
+        var(--wire-color-4),
+        var(--wire-color-5),
+        var(--wire-color-6)
+    );
+    --wire-gradient-faded: linear-gradient(
+        135deg,
+        rgba(255, 107, 107, 0.6),
+        rgba(254, 202, 87, 0.6),
+        rgba(72, 219, 251, 0.6),
+        rgba(255, 159, 243, 0.6),
+        rgba(84, 160, 255, 0.6),
+        rgba(95, 39, 205, 0.6)
+    );
+
+    /* White for masks */
+    --color-white-solid: #ffffff;
+
+    /* White glow/shadow effects */
+    --color-glow-subtle: rgba(255, 255, 255, 0.2);
+    --color-glow-medium: rgba(255, 255, 255, 0.4);
+    --color-glow-strong: rgba(255, 255, 255, 0.6);
+    --color-border-glow: rgba(255, 255, 255, 0.3);
+
+    /* VITAL LUXURY WAVE ACCENTS (Making the wave visible against black!) */
+    --color-wave: #40e0d0;
+    /* Bright turquoise */
+    --color-wave-dark: #20b2aa;
+    --color-wave-light: rgba(64, 224, 208, 0.15);
+    --color-wave-medium: rgba(64, 224, 208, 0.25);
+    --color-wave-fill: rgba(64, 224, 208, 0.08);
+    --color-white: #ffffff;
+
+    /* Semantic colors */
+    --color-success: var(--color-wave);
+    --color-warning: #ff6b6b;
+    --color-danger: #ff4757;
+    --color-info: #48dbfb;
+    --color-caution: #feca57;
+
+    /* Mode colors */
+    --color-mode-healthy: var(--color-wave);
+    --color-mode-rigid: #8b8d90;
+    --color-mode-chaotic: #ff6b6b;
+    --color-mode-collapse: #feca57;
+    --color-mode-suppressed: #54a0ff;
+    --color-mode-parasitic: #ff4757;
+
+    /* Shadows */
+    --color-shadow: rgba(0, 0, 0, 0.8);
+    --shadow-color: rgba(0, 0, 0, 0.8);
+    --shadow-subtle: rgba(0, 0, 0, 0.5);
+}
+
+/* Light theme */
+[data-theme="light"] {
+    --color-bg: #ffffff;
+    --color-bg-alt: #f8f9fa;
+    --color-bg-elevated: #e9ecef;
+    --color-text: #212529;
+    --color-text-secondary: #495057;
+    --color-text-muted: #868e96;
+    --color-border: #dee2e6;
+    --color-border-subtle: #f1f3f5;
+    --color-accent: #212529;
+    --color-accent-hover: #000000;
+    --color-overlay: rgba(0, 0, 0, 0.03);
+    --color-overlay-hover: rgba(0, 0, 0, 0.05);
+    --color-overlay-active: rgba(0, 0, 0, 0.08);
+    --color-bg-overlay: rgba(255, 255, 255, 0.9);
+    --color-wave: #000000;
+    --color-wave-dark: #343a40;
+    --color-wave-light: rgba(0, 0, 0, 0.04);
+    --color-wave-medium: rgba(0, 0, 0, 0.08);
+    --color-wave-fill: rgba(0, 0, 0, 0.02);
+    --color-white: #000000;
+    --color-success: #198754;
+    --color-warning: #dc3545;
+    --color-danger: #dc3545;
+    --color-info: #0dcaf0;
+    --color-caution: #ffc107;
+    --color-mode-healthy: var(--color-wave);
+    --color-mode-rigid: #6c757d;
+    --color-mode-chaotic: #dc3545;
+    --color-mode-collapse: #fd7e14;
+    --color-mode-suppressed: #0d6efd;
+    --color-mode-parasitic: #d63384;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --shadow-subtle: rgba(0, 0, 0, 0.03);
+}
+
+/* Warm theme */
+[data-theme="warm"] {
+    --color-bg: #1a1410;
+    --color-bg-alt: #241c16;
+    --color-bg-elevated: #2e241c;
+    --color-text: #f0e6dc;
+    --color-text-secondary: #b8a894;
+    --color-text-muted: #7a6b5a;
+    --color-border: #3d3028;
+    --color-border-subtle: #2e241c;
+    --color-accent: #e8c9a0;
+    --color-accent-hover: #f0dcc0;
+    --color-overlay: rgba(232, 201, 160, 0.05);
+    --color-overlay-hover: rgba(232, 201, 160, 0.1);
+    --color-overlay-active: rgba(232, 201, 160, 0.15);
+    --color-bg-overlay: rgba(232, 201, 160, 0.05);
+    --color-wave: #e8c9a0;
+    --color-wave-dark: #b8a894;
+    --color-wave-light: rgba(232, 201, 160, 0.08);
+    --color-wave-medium: rgba(232, 201, 160, 0.12);
+    --color-wave-fill: rgba(232, 201, 160, 0.05);
+    --color-white: #e8c9a0;
+    --color-success: var(--color-wave);
+    --color-warning: #ff6b6b;
+    --color-danger: #ff4757;
+    --color-info: #48dbfb;
+    --color-caution: #feca57;
+    --color-mode-healthy: var(--color-wave);
+    --color-mode-rigid: #8b8d90;
+    --color-mode-chaotic: #ff6b6b;
+    --color-mode-collapse: #feca57;
+    --color-mode-suppressed: #54a0ff;
+    --color-mode-parasitic: #ff4757;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --shadow-subtle: rgba(0, 0, 0, 0.2);
+}
+
+/* Ocean theme */
+[data-theme="ocean"] {
+    --color-bg: #0a1520;
+    --color-bg-alt: #0f1e2e;
+    --color-bg-elevated: #14283c;
+    --color-text: #e0f0ff;
+    --color-text-secondary: #8cb4d4;
+    --color-text-muted: #5a8299;
+    --color-border: #1e3a50;
+    --color-border-subtle: #14283c;
+    --color-accent: #4fc3f7;
+    --color-accent-hover: #81d4fa;
+    --color-overlay: rgba(79, 195, 247, 0.05);
+    --color-overlay-hover: rgba(79, 195, 247, 0.1);
+    --color-overlay-active: rgba(79, 195, 247, 0.15);
+    --color-bg-overlay: rgba(79, 195, 247, 0.05);
+    --color-wave: #4fc3f7;
+    --color-wave-dark: #8cb4d4;
+    --color-wave-light: rgba(79, 195, 247, 0.08);
+    --color-wave-medium: rgba(79, 195, 247, 0.12);
+    --color-wave-fill: rgba(79, 195, 247, 0.05);
+    --color-white: #4fc3f7;
+    --color-success: var(--color-wave);
+    --color-warning: #ff6b6b;
+    --color-danger: #ff4757;
+    --color-info: #48dbfb;
+    --color-caution: #feca57;
+    --color-mode-healthy: var(--color-wave);
+    --color-mode-rigid: #8b8d90;
+    --color-mode-chaotic: #ff6b6b;
+    --color-mode-collapse: #feca57;
+    --color-mode-suppressed: #54a0ff;
+    --color-mode-parasitic: #ff4757;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --shadow-subtle: rgba(0, 0, 0, 0.2);
+}

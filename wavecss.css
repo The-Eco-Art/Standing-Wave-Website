@@ -1,0 +1,2320 @@
+/* ========================================
+   VOCABULARY REFERENCE
+   ========================================
+   wire        = rainbow edge effect (animated gradient border)
+   overstack   = top layer with wire
+   understack  = bottom layer with wire
+   stack       = overstack + understack together (2 wires = double wire)
+   carousel    = horizontal sliding layout (the viewport with slides)
+   nav bar     = top overlay bar (fixed at top)
+   footer      = bottom overlay bar (fixed at bottom)
+   viewport    = the window between nav bar and footer where slides scroll
+   ======================================== */
+
+/* ========================================
+   DESIGN TOKENS - WAVE EDITION
+   Colors moved to theme.css - import that first!
+   ======================================== */
+
+:root {
+    /* ========================================
+   TYPOGRAPHY
+   ======================================== */
+    --font-family: "Courier New", "Courier", monospace;
+    --font-family-display:
+        "Cormorant Garamond", "Playfair Display", "Libre Baskerville", Georgia,
+        serif;
+    --font-weight-normal: 400;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 900;
+
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-md: 1.125rem;
+    --font-size-lg: 1.375rem;
+    --font-size-xl: 1.75rem;
+    --font-size-2xl: 2.25rem;
+    --font-size-3xl: 3rem;
+    --font-size-4xl: 4.5rem;
+
+    /* ========================================
+       SPACING
+       ======================================== */
+    --space-xs: 6px;
+    --space-sm: 12px;
+    --space-md: 18px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 40px;
+    --space-3xl: 48px;
+    --space-4xl: 64px;
+    --space-5xl: 80px;
+    --space-6xl: 100px;
+
+    /* ========================================
+       BORDERS
+       ======================================== */
+    --border-width: 3px;
+    --border-style: solid;
+    --border: var(--border-width) var(--border-style) var(--color-border);
+    --border-dashed: var(--border-width) dashed var(--color-border);
+
+    /* ========================================
+       RADIUS
+       ======================================== */
+    --radius-sm: 6px;
+    --radius-lg: 10px;
+    --radius-xl: 30px;
+
+    /* ========================================
+       SHADOW (Wireframe Offset)
+       ======================================== */
+    --shadow-offset: 6px;
+
+    /* ========================================
+       TRANSITIONS
+       ======================================== */
+    --transition-base: 0.25s ease;
+    --transition-slow: 0.4s ease;
+
+    /* ========================================
+       WIRE/RAINBOW EFFECT
+       Uses rainbow gradient from theme.css
+       ======================================== */
+}
+
+/* ========================================
+   RESET & BASE
+   ======================================== */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background: var(--color-bg);
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-normal);
+    color: var(--color-text);
+    line-height: 1.4;
+    padding: var(--space-2xl) var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* ========================================
+   TYPOGRAPHY
+
+   EDITABLE: Change font sizes here
+   - Heading sizes: Edit --font-size-* values
+   - Font families: Change --font-family and --font-family-display
+   ======================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-family-display);
+    font-weight: var(--font-weight-extrabold);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    color: var(--color-wave);
+}
+
+h1 {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--space-lg);
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-md);
+    text-transform: uppercase;
+}
+
+h3 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-sm);
+    text-transform: uppercase;
+}
+
+p {
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-md);
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+a {
+    color: var(--color-wave);
+    text-decoration: none;
+    transition: color var(--transition-base);
+}
+
+a:hover {
+    color: var(--color-wave-dark);
+}
+
+/* ========================================
+   LAYOUT UTILITIES
+   ======================================== */
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.grid {
+    display: grid;
+    width: 100%;
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-3xl);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-secondary {
+    color: var(--color-text-secondary);
+}
+
+.text-muted {
+    color: var(--color-text-muted);
+}
+
+.mt-sm {
+    margin-top: var(--space-sm);
+}
+
+.mt-md {
+    margin-top: var(--space-md);
+}
+
+.mt-lg {
+    margin-top: var(--space-lg);
+}
+
+.mt-xl {
+    margin-top: var(--space-xl);
+}
+
+.mt-2xl {
+    margin-top: var(--space-2xl);
+}
+
+.mb-sm {
+    margin-bottom: var(--space-sm);
+}
+
+.mb-md {
+    margin-bottom: var(--space-md);
+}
+
+.mb-lg {
+    margin-bottom: var(--space-lg);
+}
+
+.mb-xl {
+    margin-bottom: var(--space-xl);
+}
+
+/* ========================================
+   DESIGN SYSTEM: STACK COMPONENT
+   ========================================
+   The stack creates the "double wire" wireframe effect:
+   - stack-under: Offset shadow layer (positioned behind)
+   - stack-over: Main content layer (positioned in front)
+   - Both share the same rainbow border via CSS variables
+
+   The rainbow effect is defined once in --wire-gradient and applied to both.
+   ======================================== */
+
+/* ========================================
+   STACK COMPONENT (DEFAULT: 2 WIRES)
+   ========================================
+   A stack is a container with TWO wire effects:
+   - overstack: top layer with wire
+   - understack: bottom layer with wire
+
+   This is the DEFAULT for ALL containers.
+   The wire effect (rainbow gradient border) should appear on BOTH layers.
+   ======================================== */
+
+.stack {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+/* understack - bottom layer with wire (faded) */
+.stack-under {
+    position: absolute;
+    top: var(--shadow-offset);
+    left: var(--shadow-offset);
+    width: calc(100% - var(--shadow-offset));
+    height: calc(100% - var(--shadow-offset));
+    border-radius: var(--radius-lg);
+    background: transparent;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+/* understack WIRE - faded rainbow gradient */
+.stack-under::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    padding: 0.5px;
+    background: var(--wire-gradient-faded);
+    background-size: 300% 300%;
+    animation: rgbShift 8s ease infinite;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    z-index: -1;
+}
+
+/* overstack - top layer with wire (full color) */
+.stack-over {
+    position: relative;
+    z-index: 1;
+    background: var(--color-bg-overlay);
+    border: none;
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+    transition: transform var(--transition-base);
+}
+
+/* overstack WIRE - full rainbow gradient */
+.stack-over::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    padding: 0.5px;
+    background: var(--wire-gradient);
+    background-size: 300% 300%;
+    animation: rgbShift 8s ease infinite;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    z-index: -1;
+}
+
+@keyframes rgbShift {
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Slow down wire animations significantly for performance */
+.stack-over::before {
+    animation-duration: 20s !important;
+}
+
+.stack-under::before {
+    animation-duration: 25s !important;
+}
+
+/* Pause animations completely for slides that are not visible (SAVING HUGE CPU) */
+.carousel-slide:not(.active) .stack-over::before,
+.carousel-slide:not(.active) .stack-under::before,
+.carousel-slide:not(.active) .wave-wire--inline,
+.carousel-slide:not(.active) .wave-wire--center {
+    animation-play-state: paused !important;
+    display: none !important;
+    /* Forces re-render on active, completely bypasses animation engine */
+}
+
+/* On hover: stack-over moves only when DIRECTLY hovering that specific stack-over
+    (not when hovering parent stacks) */
+.stack > .stack-over:hover {
+    transform: translate(
+        calc(-1 * var(--shadow-offset) / 5),
+        calc(-1 * var(--shadow-offset) / 5)
+    );
+}
+
+/* Wave Modifiers */
+.stack--wave .stack-under {
+    background: var(--color-wave-light);
+    border-color: var(--color-wave);
+}
+
+.stack--wave .stack-over {
+    border-color: var(--color-wave);
+}
+
+.stack--wave-light .stack-under {
+    background: var(--color-bg-alt);
+}
+
+.stack--hero .stack-under {
+    background: linear-gradient(
+        135deg,
+        var(--color-wave-light) 0%,
+        var(--color-bg-alt) 100%
+    );
+}
+
+.stack.shine .stack-over {
+    animation: iridescentShine 2s ease-in-out infinite;
+}
+
+@keyframes iridescentShine {
+    0%,
+    100% {
+        filter: drop-shadow(0 0 15px var(--color-glow-medium));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 15px var(--color-glow-strong));
+    }
+}
+
+/* Button Stack */
+.stack--btn {
+    display: inline-block;
+    width: auto;
+}
+
+.stack--btn .stack-under {
+    background: transparent;
+    border-color: var(--color-wave);
+}
+
+.stack--btn .stack-over {
+    background: var(--color-bg-overlay);
+    border-color: var(--color-wave);
+    display: inline-block;
+    padding: var(--space-md) var(--space-xl);
+}
+
+/* ========================================
+   COMPONENT: NAVIGATION
+
+   EDITABLE:
+   - Nav height: Change --nav-height in carousel-mode section
+   - Brand size: Edit --font-size-xl in .nav-brand
+   - Link spacing: Adjust gap in .nav-links
+   ======================================== */
+
+.nav-container {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: var(--font-weight-extrabold);
+    font-size: var(--font-size-md);
+}
+
+.nav-brand {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-extrabold);
+    font-family: var(--font-family-display);
+    color: var(--color-wave);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--space-xl);
+}
+
+.nav-links a {
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-display);
+    color: var(--color-text);
+}
+
+.nav-links a:hover {
+    color: var(--color-wave);
+}
+
+.theme-toggle {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-left: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+    color: var(--color-wave);
+    border-color: var(--color-wave);
+}
+
+/* ========================================
+   COMPONENT: BUTTONS
+
+   EDITABLE:
+   - Button colors: Edit --color-wave in :root
+   - Border radius: Change --radius-lg
+   - Padding: Adjust padding values
+   - Hover effect: Edit translate values in .btn:hover
+   ======================================== */
+
+.btn {
+    display: inline-block;
+    background: transparent;
+    border: var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md) var(--space-3xl);
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-extrabold);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    text-decoration: none;
+    text-align: center;
+    color: var(--color-wave);
+}
+
+.btn:hover {
+    transform: translate(
+        calc(-1 * var(--shadow-offset) / 3),
+        calc(-1 * var(--shadow-offset) / 3)
+    );
+    background: var(--color-wave-light);
+}
+
+.btn--wave {
+    background: var(--color-wave);
+    color: var(--color-bg);
+    border-color: var(--color-wave);
+}
+
+.btn--wave:hover {
+    background: var(--color-wave-dark);
+    border-color: var(--color-wave-dark);
+    color: var(--color-bg);
+}
+
+/* ========================================
+   COMPONENT: WAVE WIREFRAMES
+   ======================================== */
+
+.wave-wire {
+    color: var(--color-wave);
+    font-size: var(--font-size-2xl);
+    display: inline-block;
+    filter: drop-shadow(0 0 8px var(--color-glow-subtle));
+    background: var(--wire-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.wave-wire--small {
+    font-size: var(--font-size-lg);
+}
+
+.wave-wire--tiny {
+    font-size: var(--font-size-base);
+}
+
+.wave-wire--inline {
+    font-size: 0.8em;
+    vertical-align: middle;
+    animation: oscillate 2s ease-in-out infinite;
+}
+
+.wave-wire--center {
+    font-size: 4rem;
+    animation: oscillate 1.5s ease-in-out infinite;
+}
+
+@keyframes oscillate {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    10% {
+        transform: scale(1.1);
+    }
+
+    20% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.15);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+}
+
+/* ========================================
+   HERO SECTIONS
+   ======================================== */
+
+.hero-animation {
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-title {
+    position: relative;
+    z-index: 10;
+}
+
+.hero-text {
+    font-size: var(--font-size-lg);
+    max-width: 600px;
+    position: relative;
+    z-index: 10;
+}
+
+.hero-wave-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-lg);
+    opacity: 0.7;
+    will-change: transform;
+}
+
+/* ========================================
+   COMPONENT: FOOTER
+
+   EDITABLE:
+   - Footer height: Change height in carousel-mode .footer .stack
+   - Transparency: Change background in carousel-mode .footer .stack-over
+   - Padding: Edit padding value (currently 0 in carousel mode)
+   ======================================== */
+
+.footer {
+    text-align: center;
+    padding: var(--space-3xl) 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    width: 100%;
+    max-width: 1000px;
+}
+
+.wave-divider {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.footer__copy {
+    margin-top: var(--space-sm);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+}
+
+/* ========================================
+   INDEX SPECIFIC STYLES
+   ======================================== */
+
+.wave-container {
+    position: relative;
+    width: 100%;
+    height: 380px;
+    margin: 1.25rem 0;
+    background: var(--color-bg-elevated);
+    border-radius: 14px;
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    z-index: 0;
+}
+
+.wave-container canvas {
+    position: absolute;
+    top: 35px;
+    left: 0;
+    right: 80px;
+    bottom: 35px;
+    z-index: 1;
+    will-change: transform;
+}
+
+.wave-container.large {
+    height: 400px;
+}
+
+.pattern-table {
+    display: none;
+}
+
+.pattern-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+    align-items: stretch;
+}
+
+.pattern-cards .stack {
+    height: 100%;
+    min-height: 600px;
+    position: relative;
+    /* Massive performance boost: skip rendering off-screen cards */
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px;
+}
+
+.pattern-cards .stack-under {
+    position: absolute;
+    top: var(--shadow-offset);
+    left: var(--shadow-offset);
+    width: calc(100% - var(--shadow-offset));
+    height: calc(100% - var(--shadow-offset));
+}
+
+.pattern-cards .stack-over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.pattern-cards .pattern-card {
+    flex: 1;
+    background: var(--color-card-bg);
+    border-radius: 12px;
+    padding: 1.2rem;
+    border: 1px solid var(--color-card-border);
+    box-shadow: 0 2px 10px var(--color-card-shadow);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    min-height: 600px;
+}
+
+.pattern-card-header {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-wave);
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-wave);
+}
+
+.pattern-card-row {
+    margin-bottom: 0.6rem;
+}
+
+.pattern-card-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.2rem;
+}
+
+.pattern-card-value {
+    font-size: 0.9rem;
+    color: var(--color-text);
+}
+
+.pattern-card-value.boundaries {
+    color: var(--color-wave);
+}
+
+.pattern-card-value.node {
+    color: var(--color-wave);
+    font-weight: 600;
+}
+
+.pattern-card-value.antinodes {
+    color: var(--color-wave-dark);
+}
+
+.pattern-card-breaks {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--color-border-subtle);
+    font-size: 0.75rem;
+    line-height: 1.3;
+    color: var(--color-text-secondary);
+}
+
+.pattern-card-breaks strong.collapse {
+    color: var(--color-mode-indicator-collapse);
+}
+
+.pattern-card-breaks strong.rigid {
+    color: var(--color-mode-indicator-rigid);
+}
+
+.pattern-card-breaks strong.chaotic {
+    color: var(--color-mode-indicator-chaotic);
+}
+
+.pattern-card-breaks strong.suppressed {
+    color: var(--color-mode-indicator-suppressed);
+}
+
+.pattern-card-breaks strong.parasitic {
+    color: var(--color-mode-indicator-rigid);
+    font-weight: 700;
+}
+
+.pattern-card-restore {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--color-border-subtle);
+    font-size: 0.72rem;
+    line-height: 1.3;
+    color: var(--color-text-secondary);
+    background: var(--color-restore-bg);
+    padding: 0.4rem;
+    border-radius: 6px;
+}
+
+.pattern-card-restore strong {
+    color: var(--color-restore-text);
+    font-size: 0.75rem;
+}
+
+.pattern-card-restore span {
+    font-weight: 600;
+}
+
+.pattern-card-restore span.rigid {
+    color: var(--color-restore-text);
+}
+
+.pattern-card-restore span.chaotic {
+    color: var(--color-restore-chaotic);
+}
+
+.pattern-card-restore span.suppressed {
+    color: var(--color-restore-suppressed);
+}
+
+.pattern-card-restore span.collapse {
+    color: var(--color-restore-collapse);
+}
+
+.pattern-card-restore span.parasitic {
+    color: var(--color-danger);
+    font-weight: 700;
+}
+
+.callout {
+    padding: 1.2rem 1.4rem;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+}
+
+.callout.cure {
+    background: var(--color-overlay);
+    border: 2px solid var(--color-border);
+}
+
+.callout.cure p {
+    color: var(--color-text);
+    font-style: normal;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.artifact-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.artifact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1rem;
+    background: var(--color-artifact-bg);
+    border: 1px solid var(--color-wave);
+    border-radius: 8px;
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.artifact-link:hover {
+    background: var(--color-artifact-bg-hover);
+    transform: translateY(-2px);
+}
+
+.section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.5rem;
+}
+
+.section-label.extrinsic {
+    color: var(--color-wave-dark);
+}
+
+.section-label.node {
+    color: var(--color-wave);
+}
+
+.section-label.intrinsic {
+    color: var(--color-wave-dark);
+}
+
+.axis-label {
+    position: absolute;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3rem 0.6rem;
+    background: transparent;
+    border: none;
+    z-index: 5;
+    pointer-events: none;
+    white-space: nowrap;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.axis-label.extrinsic {
+    top: 12px;
+    left: 12px;
+    color: var(--color-wave);
+}
+
+.axis-label.intrinsic {
+    top: 12px;
+    right: 12px;
+    color: var(--color-wave);
+}
+
+.axis-label.center {
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    color: var(--color-wave);
+    font-size: 0.65rem;
+}
+
+.status-banner {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    z-index: 5;
+    pointer-events: none;
+    white-space: nowrap;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.status-banner.healthy {
+    color: var(--color-success);
+}
+
+.status-banner.rigid {
+    color: var(--color-mode-rigid);
+}
+
+.status-banner.chaotic {
+    color: var(--color-mode-chaotic);
+}
+
+.status-banner.collapse {
+    color: var(--color-mode-collapse);
+}
+
+.status-banner.suppressed {
+    color: var(--color-mode-suppressed);
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1.25rem;
+}
+
+.domain-dial {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    background: var(--color-axis-bg);
+    padding: 0.4rem 0.6rem;
+    border-radius: 45px;
+    border: 1px solid var(--color-border);
+    justify-content: center;
+}
+
+.domain-option {
+    padding: 0.35rem 0.65rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+    color: var(--color-text-secondary);
+}
+
+.domain-option:hover {
+    background: var(--color-artifact-bg);
+}
+
+.domain-option.active {
+    background: var(--color-card-bg-hover);
+    color: var(--color-text);
+    box-shadow: 0 0 10px var(--color-card-border);
+}
+
+.mode-selector {
+    display: flex;
+    gap: 0.4rem;
+    background: var(--color-axis-bg);
+    padding: 0.5rem 0.7rem;
+    border-radius: 45px;
+    align-items: center;
+    border: 1px solid var(--color-border);
+}
+
+.mode-label {
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    margin-right: 0.2rem;
+}
+
+.mode-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--color-text-muted);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    color: var(--color-text-secondary);
+}
+
+.mode-btn:hover {
+    transform: scale(1.08);
+}
+
+.mode-btn.active {
+    border-width: 2px;
+    transform: scale(1.1);
+    box-shadow: 0 0 12px currentColor;
+}
+
+.mode-btn.healthy {
+    border-color: var(--color-wave);
+    color: var(--color-wave);
+}
+
+.mode-btn.healthy.active {
+    background: var(--color-mode-btn-active);
+}
+
+.mode-btn.rigid {
+    border-color: var(--color-wave-dark);
+    color: var(--color-wave-dark);
+}
+
+.mode-btn.rigid.active {
+    background: var(--color-mode-btn-active);
+}
+
+.mode-btn.chaotic {
+    border-color: var(--color-wave-dark);
+    color: var(--color-wave-dark);
+}
+
+.mode-btn.chaotic.active {
+    background: var(--color-mode-btn-active);
+}
+
+.mode-btn.collapse {
+    border-color: var(--color-wave-dark);
+    color: var(--color-wave-dark);
+}
+
+.mode-btn.collapse.active {
+    background: var(--color-mode-btn-active);
+}
+
+.mode-btn.suppressed {
+    border-color: var(--color-wave-dark);
+    color: var(--color-wave-dark);
+}
+
+.mode-btn.suppressed.active {
+    background: var(--color-mode-btn-active);
+}
+
+.mode-btn.parasitic {
+    border-color: var(--color-mode-btn-parasitic);
+    color: var(--color-mode-btn-parasitic);
+}
+
+.mode-btn.parasitic.active {
+    background: var(--color-mode-btn-parasitic-active);
+    box-shadow: 0 0 12px var(--color-mode-btn-parasitic-glow);
+}
+
+.speed-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--color-speed-bg);
+    padding: 0.4rem 0.7rem;
+    border-radius: 45px;
+    border: 1px solid var(--color-border);
+}
+
+.speed-control label {
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+}
+
+.speed-slider {
+    width: 60px;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--color-speed-track);
+    border-radius: 2px;
+    outline: none;
+}
+
+.speed-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-wave);
+    cursor: pointer;
+}
+
+.speed-value {
+    font-size: 0.7rem;
+    color: var(--color-wave);
+    min-width: 30px;
+}
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.legend-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px currentColor;
+}
+
+.legend-dot.end,
+.legend-dot.node {
+    background: var(--color-wave);
+}
+
+.legend-dot.antinode {
+    background: var(--color-wave-dark);
+}
+
+.interpretation {
+    margin-top: 1.25rem;
+    padding: 1.2rem 1.4rem;
+    background: var(--color-interpretation-bg-alt);
+    border-radius: 10px;
+    border-left: 3px solid var(--color-wave);
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+.interpretation-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    color: var(--color-wave);
+}
+
+.interpretation-text {
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.interpretation-text:last-child {
+    margin-bottom: 0;
+}
+
+.interpretation-text strong {
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.wave-pattern-intro {
+    text-align: center;
+    padding: 1rem;
+    background: var(--color-wave-pattern-bg);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.wave-pattern-label {
+    font-size: 0.8rem;
+    color: var(--color-wave-dark);
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.wave-pattern-desc {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+}
+
+.code-block {
+    background: var(--color-code-bg);
+    padding: 1.25rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1rem 0;
+    border: 1px solid var(--color-code-border);
+}
+
+.code-block pre {
+    font-family: "Courier New", monospace;
+    font-size: 0.8rem;
+    color: var(--color-text);
+    line-height: 1.5;
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.wishlist-section {
+    background: linear-gradient(
+        135deg,
+        rgba(44, 62, 80, 0.04),
+        rgba(26, 37, 47, 0.04)
+    );
+}
+
+.need-card {
+    background: var(--color-callout-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 0.8rem 0;
+    border-left: 3px solid var(--color-wave-dark);
+    transition: transform 0.2s;
+}
+
+.need-card:hover {
+    transform: translateX(4px);
+}
+
+.need-card.critical {
+    border-left-color: var(--color-wave-dark);
+    background: var(--color-wave-pattern-bg);
+}
+
+.need-card.high {
+    border-left-color: var(--color-wave-dark);
+}
+
+.urgency-badge {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+}
+
+.urgency-badge.critical {
+    background: rgba(44, 62, 80, 0.1);
+    color: var(--color-wave-dark);
+}
+
+.urgency-badge.high {
+    background: rgba(44, 62, 80, 0.1);
+    color: var(--color-wave-dark);
+}
+
+.fulfill-btn {
+    display: inline-block;
+    margin-top: 0.7rem;
+    padding: 0.5rem 1rem;
+    background: var(--color-wave);
+    color: var(--color-bg);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: all 0.25s;
+}
+
+.fulfill-btn:hover {
+    background: var(--color-wave-dark);
+    transform: translateY(-2px);
+}
+
+.signal-stats {
+    display: flex;
+    gap: 1.25rem;
+    margin: 1rem 0;
+    padding: 0.8rem;
+    background: var(--color-interpretation-bg-alt);
+    border-radius: 6px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-wave);
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    color: var(--color-text-secondary);
+}
+
+.quote-block {
+    background: var(--color-overlay);
+    border-left: 3px solid var(--color-border);
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    font-style: italic;
+    color: var(--color-text);
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.pattern-cards[data-layout="auto-fill"] {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+    html {
+        font-size: 13px;
+        /* Scales down all rem-based typography to fit narrow screens */
+    }
+
+    :root {
+        --shadow-offset: 4px;
+        --font-size-4xl: 2.2rem;
+        --font-size-2xl: 1.5rem;
+    }
+
+    body {
+        padding: var(--space-4xl) var(--space-lg);
+        gap: var(--space-5xl);
+    }
+
+    .grid-3 {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+    }
+
+    .nav-content {
+        flex-direction: column;
+        gap: var(--space-sm);
+        padding-top: var(--space-xs);
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--space-xs);
+    }
+
+    .nav-links a {
+        padding: 0.2rem 0.5rem;
+    }
+
+    .theme-toggle {
+        margin-left: 0;
+        margin-top: 0.2rem;
+    }
+
+    .stack-over {
+        padding: var(--space-lg);
+    }
+
+    .hero-animation {
+        min-height: 350px;
+    }
+
+    .hero-message {
+        padding: var(--space-2xl);
+    }
+
+    .orbit-system {
+        width: 240px;
+        height: 240px;
+    }
+
+    .orbit-ring--1 {
+        width: 80px;
+        height: 80px;
+    }
+
+    .orbit-ring--2 {
+        width: 140px;
+        height: 140px;
+    }
+
+    .orbit-ring--3 {
+        width: 200px;
+        height: 200px;
+    }
+
+    .wave-giant {
+        width: 150px;
+        height: 150px;
+    }
+
+    .wave-container {
+        height: 280px;
+    }
+
+    .domain-dial {
+        gap: 0.25rem;
+    }
+
+    .domain-option {
+        font-size: 0.65rem;
+        padding: 0.3rem 0.5rem;
+    }
+
+    /* Pattern Cards fix for mobile */
+    .pattern-cards {
+        grid-template-columns: 1fr;
+        padding: 0 0.5rem;
+    }
+
+    .pattern-cards .stack {
+        min-height: auto;
+    }
+
+    .pattern-cards .pattern-card {
+        min-height: auto;
+        padding: 1rem;
+    }
+
+    /* Make navigation arrows larger and easier to touch on mobile */
+    .nav-arrow {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+        background: rgba(10, 14, 23, 0.7);
+    }
+
+    .nav-arrow.prev {
+        left: 0.1rem;
+        border-radius: 50%;
+    }
+
+    .nav-arrow.next {
+        right: 0.1rem;
+        border-radius: 50%;
+    }
+
+    .nav-brand {
+        font-size: 1.3rem;
+        white-space: nowrap;
+        /* Prevent STANDING WAVE from breaking lines */
+        margin-bottom: 0.2rem;
+    }
+
+    .nav-links {
+        font-size: 0.8rem;
+    }
+
+    .nav-content {
+        gap: 0.5rem;
+    }
+
+    .carousel-slide {
+        padding-top: 80px;
+        /* Make more room for the stacked nav bar pushing down */
+        padding-bottom: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --shadow-offset: 6px;
+        --font-size-4xl: 2.5rem;
+    }
+
+    .btn-container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .wave-corner {
+        font-size: var(--font-size-md);
+    }
+}
+
+/* ========================================
+   CAROUSEL MODE - HORIZONTAL LAYOUT
+   ========================================
+
+   HOW TO EDIT LAYOUT:
+
+   Footer distance from bottom:
+     body.carousel-mode .footer { bottom: 0; }  <- change to "bottom: 20px" to raise
+
+   Footer height:
+     body.carousel-mode .footer .stack { height: 40px; }  <- change to "50px"
+
+   Nav height:
+     body.carousel-mode .nav-container .stack { height: 50px; }  <- change to "40px"
+
+   Gap between nav and footer (viewport height):
+     .carousel-viewport { height: calc(100% - 90px); }
+     If nav is 50px and footer is 40px: 100% - 90px = 10px gap (already correct)
+     If you change heights, adjust this formula!
+
+   Nav transparency:
+     body.carousel-mode .nav-container .stack-over { background: rgba(10, 14, 23, 0.85); }
+     Change 0.85 to 0.5 for more transparent, 1.0 for solid
+
+   Footer transparency:
+     body.carousel-mode .footer .stack-over { background: rgba(10, 14, 23, 0.85); }
+     Same adjustments as nav
+
+   ======================================== */
+
+/* Reset body for carousel */
+body.carousel-mode {
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    height: 100%;
+    width: 100%;
+}
+
+/* Viewport - the slide area between nav and footer
+   EDITABLE: Change top/height to adjust spacing around slides
+   - top: 50px = nav height (keeps slides below nav)
+   - height: calc(100% - 90px) = 100% minus (nav + footer heights)
+   ======================================== */
+.carousel-viewport {
+    position: fixed;
+    top: 50px;
+    /* Must match nav height */
+    left: 0;
+    width: 100%;
+    height: calc(100% - 90px);
+    /* 100% - (nav 50px + footer 40px) */
+    overflow: visible;
+    z-index: 0;
+    background: transparent;
+}
+
+@media (max-width: 768px) {
+    .carousel-viewport {
+        top: 100px; /* Taller nav on mobile */
+        height: calc(100% - 140px); /* 100% - (100px nav + 40px footer) */
+    }
+}
+
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-track {
+    display: flex;
+    width: 300vw;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    background: transparent;
+    overflow: visible;
+}
+
+.carousel-slide {
+    width: 100vw;
+    height: 100%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px;
+    padding-top: 30px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    background: transparent;
+}
+
+.carousel-slide > .container {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 100%;
+    display: block;
+    margin: 0 auto;
+    background: transparent;
+}
+
+.carousel-slide > .container > .stack {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    overflow-y: visible;
+    background: transparent;
+}
+
+/* ========================================
+   CAROUSEL OVERLAYS - NAV BAR & FOOTER
+   ========================================
+   nav bar  = top overlay (fixed at top of viewport)
+   footer   = bottom overlay (fixed at bottom of viewport)
+   viewport = sliding area between nav bar and footer
+
+   NOTE: Nav bar and footer are OVERLAYS, not inside the carousel.
+   They should ALSO have 2-wire effect (default).
+   ======================================== */
+
+/* Shared fixed overlay properties for nav bar and footer */
+body.carousel-mode .nav-container,
+body.carousel-mode .footer {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    z-index: 1000;
+    background: transparent;
+    padding: 0;
+}
+
+body.carousel-mode .nav-container .container,
+body.carousel-mode .footer .container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Shared overstack styles - use same background as slides */
+body.carousel-mode .nav-container .stack-over,
+body.carousel-mode .footer .stack-over {
+    padding: 0 20px;
+    background: var(--color-bg-overlay);
+}
+
+/* Shared understack styles - use same background as slides */
+body.carousel-mode .nav-container .stack-under,
+body.carousel-mode .footer .stack-under {
+    background: var(--color-bg-overlay);
+}
+
+/* understack WIRE - ensure it appears on nav bar and footer */
+body.carousel-mode .nav-container .stack-under::before,
+body.carousel-mode .footer .stack-under::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    padding: 0.5px;
+    background: var(--wire-gradient-faded);
+    background-size: 300% 300%;
+    animation: rgbShift 8s ease infinite;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* overstack WIRE - ensure it appears on nav bar and footer */
+body.carousel-mode .nav-container .stack-over::before,
+body.carousel-mode .footer .stack-over::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    padding: 0.5px;
+    background: var(--wire-gradient);
+    background-size: 300% 300%;
+    animation: rgbShift 8s ease infinite;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* ========================================
+   NAV BAR - TOP OVERLAY
+   ========================================
+   overstack at TOP edge (top: 0)
+   understack also at top edge (no offset)
+   ======================================== */
+
+body.carousel-mode .nav-container {
+    top: 0;
+}
+
+body.carousel-mode .nav-container .stack {
+    height: 50px;
+}
+
+/* Nav stack-under: at TOP edge WITH OFFSET (like default stack) */
+body.carousel-mode .nav-container .stack-under {
+    top: var(--shadow-offset);
+    left: var(--shadow-offset);
+    transform: none;
+}
+
+body.carousel-mode .nav-container .stack-over {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    body.carousel-mode .nav-container .stack {
+        height: 100px;
+    }
+
+    body.carousel-mode .nav-container .stack-over {
+        height: 100px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.5rem;
+        padding-top: 10px;
+    }
+
+    body.carousel-mode .nav-container .nav-brand {
+        margin-bottom: 0;
+    }
+}
+
+/* ========================================
+   FOOTER - BOTTOM OVERLAY
+   ========================================
+   understack at BOTTOM edge (bottom: 0)
+   overstack sits on top of understack
+   ======================================== */
+
+body.carousel-mode .footer {
+    bottom: 0;
+    text-align: center;
+    font-size: 0.75rem;
+    height: 40px;
+}
+
+body.carousel-mode .footer .stack {
+    height: 40px;
+}
+
+/* Footer stack-under: at BOTTOM edge WITH OFFSET */
+body.carousel-mode .footer .stack-under {
+    top: var(--shadow-offset);
+    left: var(--shadow-offset);
+    transform: none;
+}
+
+body.carousel-mode .footer .stack-over {
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+body.carousel-mode .footer p {
+    margin: 0;
+    line-height: 1.2;
+}
+
+body.carousel-mode .wave-divider {
+    margin-bottom: 4px;
+    gap: 8px;
+}
+
+body.carousel-mode .wave-wire--small {
+    font-size: 0.8rem;
+}
+
+/* Nav arrows - fade in/out */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    width: 50px;
+    height: 50px;
+    background: var(--color-overlay);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--color-text);
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-arrow:hover {
+    background: var(--color-overlay-hover);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-wrapper:hover .nav-arrow {
+    opacity: 0.6;
+    pointer-events: auto;
+}
+
+.carousel-wrapper:hover .nav-arrow:hover {
+    opacity: 1;
+}
+
+.nav-arrow.prev {
+    left: 20px;
+}
+
+.nav-arrow.next {
+    right: 20px;
+}
+
+/* Section dots */
+.section-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 100;
+    padding: 6px 16px;
+    background: var(--color-modal-bg);
+    border-radius: 20px;
+    border: 1px solid var(--color-border);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.carousel-wrapper:hover .section-dots {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-overlay-active);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.dot:hover {
+    background: var(--color-accent-hover);
+    transform: scale(1.2);
+}
+
+.dot.active {
+    background: var(--color-accent);
+    box-shadow: 0 0 12px var(--color-accent);
+    transform: scale(1.3);
+    border-color: var(--color-border-glow);
+}
+
+/* Active nav link */
+.nav-links a.active {
+    color: var(--color-accent);
+    text-shadow: 0 0 10px var(--color-border-glow);
+}
+
+/* Scrollbar styling */
+.carousel-slide > .container > .stack::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.carousel-slide > .container > .stack::-webkit-scrollbar-track {
+    background: var(--color-overlay);
+    border-radius: 3px;
+}
+
+.carousel-slide > .container > .stack::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 3px;
+}
+
+.carousel-slide > .container > .stack::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-muted);
+}
+
+/* Responsive carousel */
+@media (max-width: 768px) {
+    .carousel-slide {
+        padding: 80px 20px 60px 20px;
+    }
+
+    .nav-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .nav-arrow.prev {
+        left: 10px;
+    }
+
+    .nav-arrow.next {
+        right: 10px;
+    }
+
+    .section-dots {
+        bottom: 40px;
+        padding: 8px 16px;
+    }
+}
+
+/* ========================================
+   CSS WAVE ANIMATIONS (GPU-accelerated, lightweight)
+   ======================================== */
+@keyframes waveShift {
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes wavePulse {
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes waveFloat {
+    0%,
+    100% {
+        transform: translateY(0) scaleY(1);
+    }
+
+    50% {
+        transform: translateY(-2px) scaleY(1.05);
+    }
+}
+
+.nav-wave-bg {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.nav-wave-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(140, 182, 226, 0.1) 20%,
+        rgba(178, 148, 187, 0.1) 40%,
+        rgba(140, 182, 226, 0.1) 60%,
+        rgba(178, 148, 187, 0.1) 80%,
+        transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: waveShift 8s ease-in-out infinite;
+}
+
+.nav-wave-bg::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(
+        to top,
+        rgba(140, 182, 226, 0.05) 0%,
+        transparent 100%
+    );
+    animation: wavePulse 4s ease-in-out infinite;
+}
+
+.principle-wave-bg {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.principle-wave-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 8px,
+        rgba(140, 182, 226, 0.03) 8px,
+        rgba(140, 182, 226, 0.03) 9px
+    );
+    animation: waveFloat 3s ease-in-out infinite;
+}
+
+.principle-wave-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse at center bottom,
+        rgba(178, 148, 187, 0.08) 0%,
+        transparent 70%
+    );
+    animation: wavePulse 5s ease-in-out infinite;
+}
+
+/* ========================================
+   INTERACTIVE SCROLLYTELLING COMPONENT
+   ======================================== */
+.interactive-story-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    height: auto;
+    min-height: 500px;
+    gap: var(--space-xl);
+    overflow: visible;
+}
+
+.sticky-canvas-wrapper {
+    position: sticky;
+    top: 10vh;
+    width: 60%;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sticky-canvas-wrapper .wave-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.story-scroll-steps {
+    width: 40%;
+    height: auto;
+    overflow-y: visible;
+    padding-right: var(--space-md);
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.story-scroll-steps::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+}
+
+.story-scroll-steps .step {
+    min-height: 40vh;
+    padding: var(--space-2xl) 0;
+    opacity: 0.2;
+    transition: opacity 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.story-scroll-steps .step.active {
+    opacity: 1;
+}
+
+.story-scroll-steps h3 {
+    color: var(--color-wave);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-md);
+    font-family: var(--font-family-display);
+}
+
+.story-scroll-steps p {
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: var(--space-md) var(--space-sm);
+        gap: var(--space-md);
+    }
+
+    .nav-container {
+        margin-bottom: 0 !important;
+    }
+
+    /* ---- NODE SLIDE: Column layout on mobile ---- */
+    .carousel-slide[data-name="node"] {
+        display: flex !important;
+        flex-direction: column !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        padding-top: 10px !important;
+    }
+
+    .carousel-slide[data-name="node"] .container,
+    .carousel-slide[data-name="node"] .stack,
+    .carousel-slide[data-name="node"] .stack-over {
+        overflow: visible !important;
+        background: transparent !important;
+    }
+
+    /* ---- HEADER: Hide on mobile to push canvas up ---- */
+    .carousel-slide[data-name="node"] .slide-header-area {
+        display: none;
+    }
+
+    /* ---- SCROLLYTELLING CONTAINER: Vertical stack ---- */
+    .interactive-story-container {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        height: auto;
+        min-height: auto;
+        gap: 0;
+        margin-top: 0;
+    }
+
+    /* ---- STICKY CANVAS: Top half of mobile viewport ---- */
+    .sticky-canvas-wrapper {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        height: 45vh;
+        min-height: 200px;
+        max-height: 350px;
+        z-index: 100;
+        background: var(--color-bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid var(--color-border-subtle);
+        overflow: hidden;
+        flex-shrink: 0;
+    }
+
+    /* Override the generic .wave-container mobile height for the sticky visualizer */
+    .sticky-canvas-wrapper .wave-container,
+    .sticky-canvas-wrapper .wave-container.large {
+        width: 100%;
+        height: 100% !important;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    /* ---- SCROLL STEPS: Bottom half, flowing content ---- */
+    .story-scroll-steps {
+        width: 100%;
+        position: relative;
+        z-index: 10;
+        padding: 2rem 0.5rem 40vh 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .story-scroll-steps .step {
+        min-height: 35vh;
+        padding: 1.5rem;
+        background: var(--color-bg-overlay);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 12px;
+        margin: 0.75rem 0 2rem 0;
+        border: 1px solid var(--color-border-subtle);
+        opacity: 0.4;
+        transition: all 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .story-scroll-steps .step.active {
+        opacity: 1;
+        background: var(--color-bg-elevated);
+        border-color: var(--color-wave);
+        box-shadow: 0 0 20px var(--color-shadow-subtle);
+        transform: translateY(-3px);
+    }
+
+    .story-scroll-steps h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: var(--color-wave);
+    }
+
+    .story-scroll-steps p {
+        font-size: 0.88rem;
+        line-height: 1.5;
+        color: var(--color-text);
+    }
+
+    /* ---- PATTERN CARDS: Full width stacking on mobile ---- */
+    .pattern-cards {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+        padding: 0 0.25rem;
+    }
+
+    .pattern-cards .stack {
+        min-height: auto;
+        height: auto;
+        position: relative;
+        content-visibility: visible;
+        contain-intrinsic-size: auto;
+    }
+
+    .pattern-cards .stack-over {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .pattern-cards .stack-under {
+        position: absolute;
+        width: calc(100% - var(--shadow-offset));
+        height: calc(100% - var(--shadow-offset));
+    }
+
+    .pattern-cards .pattern-card {
+        min-height: auto;
+        padding: 1rem;
+    }
+
+    /* ---- SLIDE HEADER: Compact on mobile ---- */
+    .slide-header-area {
+        padding: 0 0.5rem;
+    }
+
+    .slide-header-area .stack-nested {
+        margin-bottom: 0.5rem;
+    }
+}

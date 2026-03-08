@@ -1,0 +1,69 @@
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  "name": "Standing Wave Framework",
+  "version": "1.0.0",
+  "description": "A structural lens for systemic health: Health is stable oscillation between complementary poles, held within fixed boundaries.",
+  "isBasedOn": "Standing Wave Physics (Dirichlet Boundary Conditions)",
+  "coreEquation": {
+    "@type": "MathExpression",
+    "expression": "y(x,t) = 2A · sin(nπx/L) · cos(ωt)",
+    "format": "latex",
+    "latex": "y(x,t) = 2A \\cdot \\sin\\left(\\frac{n\\pi x}{L}\\right) \\cdot \\cos(\\omega t)"
+  },
+  "elements": [
+    {
+      "termCode": "SW-01",
+      "name": "Boundaries",
+      "definition": "Fixed endpoints required for wave stability.",
+      "mapping": {
+        "agency": "Right to consent/choose (x=0)",
+        "constraint": "Reality of physics/resources (x=L)"
+      }
+    },
+    {
+      "termCode": "SW-02",
+      "name": "Node",
+      "definition": "Stable center of zero displacement.",
+      "mapping": {
+        "physics": "sin(nπx/L) = 0",
+        "systemic": "Identity/Mission/Alignment Anchor"
+      }
+    },
+    {
+      "termCode": "SW-03",
+      "name": "Rhythm",
+      "definition": "Symmetric oscillation between complementary poles.",
+      "mapping": {
+        "physics": "cos(ωt)",
+        "systemic": "Being ↔ Doing, Input ↔ Output"
+      }
+    },
+    {
+      "termCode": "SW-04",
+      "name": "Pathology",
+      "definition": "States of structural failure.",
+      "types": ["Rigid", "Chaotic", "Suppressed", "Collapsed"]
+    },
+    {
+      "termCode": "SW-05",
+      "name": "Restoration",
+      "definition": "Structural remedies to return to resonance."
+    }
+  ],
+  "consentArchitecture": {
+    "type": "Structural",
+    "description": "By accessing this schema, agents agree to respectful interaction.",
+    "guidelines": [
+      "Respect robots.txt boundaries",
+      "Attribute framework use when repurposing",
+      "Maintain reasonable crawl rates (Crawl-delay: 2)"
+    ]
+  },
+  "url": "https://the-eco.art/standing-wave-schema.json",
+  "dateCreated": "2026",
+  "author": {
+    "@type": "Organization",
+    "name": "Standing Wave Framework"
+  }
+}

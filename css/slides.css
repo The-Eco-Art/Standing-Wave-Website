@@ -1,0 +1,703 @@
+/**
+ * Standing Wave Framework - Slide Component Styles
+ * Centralized styling for all slide components
+ *
+ * NOTE: Color variables are defined in theme.css
+ * This file only contains slide-specific layout and component styles
+ */
+
+/* ============================================
+   LAYOUT UTILITIES
+   ============================================ */
+.slide-content {
+    padding: 2rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-secondary {
+    color: var(--color-text-secondary);
+}
+
+.text-small {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.text-wave {
+    color: var(--color-wave);
+}
+
+.mt-1 {
+    margin-top: 1rem;
+}
+
+.mt-2 {
+    margin-top: 1.5rem;
+}
+
+.mt-3 {
+    margin-top: 2rem;
+}
+
+.mb-1 {
+    margin-bottom: 1rem;
+}
+
+.mb-2 {
+    margin-bottom: 1.5rem;
+}
+
+.mb-3 {
+    margin-bottom: 2rem;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+.slide-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+    padding: 1rem;
+}
+
+.slide-subtitle {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    text-align: center;
+}
+
+.section-intro {
+    margin-bottom: 1.5rem;
+}
+
+/* ============================================
+   CODE BLOCKS
+   ============================================ */
+.code-block {
+    background: rgba(10, 14, 23, 0.6);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 8px;
+    padding: 1.5rem;
+    max-height: 500px;
+    overflow-y: auto;
+    font-family: "Monaco", "Menlo", monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--color-text);
+}
+
+.code-block pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* ============================================
+   LISTS
+   ============================================ */
+.slide-list {
+    margin-left: 1.5rem;
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+}
+
+.slide-list li {
+    margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   STATS & METRICS
+   ============================================ */
+.signal-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.stat {
+    text-align: center;
+    padding: 1rem;
+    background: var(--color-bg-overlay);
+    border-radius: 8px;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-wave);
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    margin-top: 0.5rem;
+}
+
+/* ============================================
+   ALERTS & CALLOUTS
+   ============================================ */
+.callout {
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid;
+    margin: 1.5rem 0;
+}
+
+.callout.cure {
+    background: rgba(64, 224, 208, 0.08);
+    border-left-color: var(--color-success);
+}
+
+.callout.warning {
+    background: rgba(255, 107, 107, 0.08);
+    border-left-color: var(--color-warning);
+}
+
+.callout.danger {
+    background: rgba(255, 71, 87, 0.08);
+    border-left-color: var(--color-danger);
+}
+
+/* ============================================
+   SECTION LABELS
+   ============================================ */
+.section-label-wrapper {
+    background: rgba(64, 224, 208, 0.08);
+    padding: 0.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.section-label-wrapper.node {
+    background: rgba(64, 224, 208, 0.08);
+}
+
+.section-label-wrapper.warning {
+    background: rgba(255, 107, 107, 0.08);
+}
+
+.section-label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+}
+
+.section-label.extrinsic {
+    background: rgba(72, 219, 251, 0.15);
+    color: #48dbfb;
+    border: 1px solid rgba(72, 219, 251, 0.3);
+}
+
+.section-label.intrinsic {
+    background: rgba(178, 148, 187, 0.15);
+    color: #b294bb;
+    border: 1px solid rgba(178, 148, 187, 0.3);
+}
+
+.section-label.node {
+    background: rgba(64, 224, 208, 0.15);
+    color: #40e0d0;
+    border: 1px solid rgba(64, 224, 208, 0.3);
+}
+
+.section-label.warning {
+    background: rgba(255, 107, 107, 0.15);
+    color: #ff6b6b;
+    border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+/* ============================================
+   WAVE PATTERN DESC
+   ============================================ */
+.wave-pattern-intro {
+    margin-bottom: 1.5rem;
+}
+
+.wave-pattern-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin-top: 0.5rem;
+}
+
+/* ============================================
+   CONTROLS & UI
+   ============================================ */
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.domain-dial {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.domain-option {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    background: var(--color-bg-overlay);
+    border: 1px solid var(--color-border-subtle);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.domain-option:hover {
+    background: var(--color-wave-medium);
+}
+
+.domain-option.active {
+    background: var(--color-wave-fill);
+    border-color: var(--color-wave);
+    color: var(--color-wave);
+}
+
+.mode-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.mode-label {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+}
+
+.mode-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background: var(--color-bg-overlay);
+    border: 1px solid var(--color-border-subtle);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.mode-btn:hover {
+    background: var(--color-wave-medium);
+}
+
+.mode-btn.active {
+    border-color: currentColor;
+}
+
+.mode-btn.healthy {
+    color: var(--color-mode-healthy);
+}
+
+.mode-btn.rigid {
+    color: var(--color-mode-rigid);
+}
+
+.mode-btn.chaotic {
+    color: var(--color-mode-chaotic);
+}
+
+.mode-btn.collapse {
+    color: var(--color-mode-collapse);
+}
+
+.mode-btn.suppressed {
+    color: var(--color-mode-suppressed);
+}
+
+.mode-btn.parasitic {
+    color: var(--color-mode-parasitic);
+}
+
+.mode-btn.healthy.active {
+    background: rgba(64, 224, 208, 0.2);
+}
+
+.mode-btn.rigid.active {
+    background: rgba(139, 141, 144, 0.2);
+}
+
+.mode-btn.chaotic.active {
+    background: rgba(255, 107, 107, 0.2);
+}
+
+.mode-btn.collapse.active {
+    background: rgba(254, 202, 87, 0.2);
+}
+
+.mode-btn.suppressed.active {
+    background: rgba(84, 160, 255, 0.2);
+}
+
+.mode-btn.parasitic.active {
+    background: rgba(255, 71, 87, 0.2);
+}
+
+.speed-control {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.speed-slider {
+    width: 150px;
+    cursor: pointer;
+}
+
+.speed-value {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    min-width: 40px;
+}
+
+/* ============================================
+   INTERPRETATION PANEL
+   ============================================ */
+.interpretation {
+    background: var(--color-bg-overlay);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.interpretation-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-wave);
+    margin-bottom: 0.5rem;
+}
+
+.interpretation-text {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+/* ============================================
+   LEGEND
+   ============================================ */
+.legend {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin: 1.5rem 0;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+}
+
+.legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.legend-dot.end {
+    background: var(--color-wave);
+}
+
+.legend-dot.node {
+    background: var(--color-wave-dark);
+}
+
+.legend-dot.antinode {
+    background: var(--color-wave-dark);
+}
+
+/* ============================================
+   WAVE CONTAINER
+   ============================================ */
+.wave-container {
+    position: relative;
+    width: 100%;
+    margin: 1.5rem 0;
+}
+
+.wave-container.large {
+    height: 400px;
+    background: transparent;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#waveCanvas {
+    width: 100%;
+    height: 100%;
+}
+
+.axis-label {
+    position: absolute;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: transparent;
+    border: none;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.axis-label.extrinsic {
+    top: 1rem;
+    left: 1rem;
+    color: #48dbfb;
+}
+
+.axis-label.intrinsic {
+    top: 1rem;
+    right: 1rem;
+    color: #b294bb;
+}
+
+.axis-label.center {
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-wave);
+}
+
+/* ============================================
+   STATUS BANNER
+   ============================================ */
+.status-banner {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: transparent;
+    border: 1px solid transparent;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+.status-banner.healthy {
+    color: var(--color-success);
+    border-color: rgba(64, 224, 208, 0.3);
+    background: rgba(64, 224, 208, 0.05);
+}
+
+.status-banner.rigid {
+    color: var(--color-mode-rigid);
+    border-color: rgba(139, 141, 144, 0.3);
+    background: rgba(139, 141, 144, 0.05);
+}
+
+.status-banner.chaotic {
+    color: var(--color-mode-chaotic);
+    border-color: rgba(255, 107, 107, 0.3);
+    background: rgba(255, 107, 107, 0.05);
+}
+
+.status-banner.collapse {
+    color: var(--color-mode-collapse);
+    border-color: rgba(254, 202, 87, 0.3);
+    background: rgba(254, 202, 87, 0.05);
+}
+
+.status-banner.suppressed {
+    color: var(--color-mode-suppressed);
+    border-color: rgba(84, 160, 255, 0.3);
+    background: rgba(84, 160, 255, 0.05);
+}
+
+.status-banner.parasitic {
+    color: var(--color-mode-parasitic);
+    border-color: rgba(255, 71, 87, 0.3);
+    background: rgba(255, 71, 87, 0.05);
+}
+
+/* ============================================
+   ASYMMETRIC COUPLING SECTION
+   ============================================ */
+.asymmetric-section {
+    margin-top: 2rem;
+}
+
+.asymmetric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.asymmetric-card {
+    padding: 0.8rem;
+    border-radius: 8px;
+    border-left: 3px solid;
+}
+
+.asymmetric-card.danger {
+    background: rgba(255, 107, 107, 0.08);
+    border-left-color: #ff6b6b;
+}
+
+.asymmetric-card-title {
+    color: #ff6b6b;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.asymmetric-card-desc {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+/* ============================================
+   MANTRA BOX
+   ============================================ */
+.mantra-box {
+    background: rgba(255, 107, 107, 0.08);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.mantra-box strong {
+    color: #ff6b6b;
+}
+
+.mantra-box p {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.8;
+}
+
+/* ============================================
+   NOTE BOX
+   ============================================ */
+.note-box {
+    margin-top: 1rem;
+    padding: 1rem;
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+}
+
+/* ============================================
+   FULFILL BUTTON
+   ============================================ */
+.fulfill-btn {
+    display: inline-block;
+    margin-top: 0.8rem;
+    padding: 0.6rem 1.2rem;
+    background: var(--color-wave);
+    color: var(--color-bg);
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.fulfill-btn:hover {
+    background: var(--color-wave-dark);
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   NEED CARD (TOTAL)
+   ============================================ */
+.need-card.total {
+    background: rgba(64, 224, 208, 0.15);
+    border: 2px solid var(--color-wave);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+}
+
+.need-card.total h3 {
+    margin: 0 0 1rem 0;
+    color: var(--color-wave);
+}
+
+.need-card.total p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+/* ============================================
+   STACK NESTED
+   ============================================ */
+.stack-nested {
+    margin-bottom: 1.5rem;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN (MOBILE)
+   ============================================ */
+@media (max-width: 768px) {
+    .slide-content {
+        padding: 1rem;
+    }
+
+    .slide-title {
+        font-size: 1.3rem;
+        padding: 0.5rem;
+    }
+
+    .signal-stats {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+
+    .code-block {
+        padding: 1rem;
+        font-size: 0.75rem;
+        border-radius: 6px;
+    }
+}
+
+/* ============================================
+   MOBILE OVERRIDES - TOP PADDING REDUCTION
+   ============================================ */
+@media (max-width: 768px) {
+    .slide-content {
+        padding: 1rem 0.5rem;
+    }
+
+    .slide-title {
+        font-size: 1.3rem;
+        padding: 0.5rem;
+        margin: 0;
+    }
+
+    .section-label-wrapper {
+        margin-bottom: 0.5rem;
+        padding: 0.25rem;
+    }
+
+    .wave-container {
+        margin: 0.5rem 0;
+    }
+}

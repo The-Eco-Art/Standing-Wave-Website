@@ -1,0 +1,672 @@
+<div
+    class="carousel-slide active"
+    data-name="node"
+    data-description="Interactive wave visualizer"
+    data-resonance="node,visualizer,wave,interactive"
+    data-level="L0"
+>
+    <div class="container">
+        <!-- Stack - The wireframe container
+               EDITABLE: Change stack--wave-light to:
+               - stack--wave for blue wireframe
+               - stack--hero for gradient background
+               - Remove modifier for default overlay -->
+        <div class="stack stack--wave-light">
+            <div class="stack-under"></div>
+            <div class="stack-over">
+                <div class="stack stack--wave stack-nested">
+                    <div class="stack-under">
+                        <!-- <div class="principle-wave-bg"></div> -->
+                    </div>
+                    <div class="stack-over">
+                        <h2 class="slide-title">
+                            Health is stable oscillation within unmovable
+                            boundaries.
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="section-label-wrapper node">
+                    <div class="section-label node">
+                        ● NODE — THE UNCHANGING PRINCIPLE
+                    </div>
+                    <div class="wave-pattern-desc">
+                        The thing that doesn't move
+                    </div>
+                </div>
+
+                <div class="wave-container large">
+                    <!-- Wave Canvas - The main visualizer
+                     EDITABLE: Change canvas behavior in the drawWave() function below -->
+                    <canvas id="waveCanvas"></canvas>
+                    <div class="axis-label extrinsic" id="extrinsicLabel">
+                        EXTRINSIC
+                    </div>
+                    <div class="axis-label center" id="centerLabel">Node</div>
+                    <div class="axis-label intrinsic" id="intrinsicLabel">
+                        INTRINSIC
+                    </div>
+                    <div class="status-banner healthy" id="statusBanner">
+                        ✓ Healthy Resonance
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <!-- Domain Dial - Select different wave domains
+                     EDITABLE: Add/remove domain-options below
+                     Also update the 'domains' object in JavaScript -->
+                    <div class="domain-dial" id="domainDial">
+                        <div class="domain-option active" data-domain="being">
+                            Being
+                        </div>
+                        <div class="domain-option" data-domain="physics">
+                            Physics
+                        </div>
+                        <div class="domain-option" data-domain="systems">
+                            Systems
+                        </div>
+                        <div class="domain-option" data-domain="ai">AI</div>
+                        <div class="domain-option" data-domain="daily">
+                            Daily
+                        </div>
+                        <div class="domain-option" data-domain="parenting">
+                            Parenting
+                        </div>
+                    </div>
+
+                    <!-- Mode Selector - Choose wave state
+                     EDITABLE: Add new modes in the 'modes' object in JavaScript -->
+                    <div class="mode-selector">
+                        <span class="mode-label">State:</span>
+                        <div
+                            class="mode-btn healthy active"
+                            data-mode="healthy"
+                            title="Healthy: full swing"
+                        >
+                            ✓
+                        </div>
+                        <div
+                            class="mode-btn rigid"
+                            data-mode="rigid"
+                            title="Rigid: suppressed"
+                        >
+                            ▬
+                        </div>
+                        <div
+                            class="mode-btn chaotic"
+                            data-mode="chaotic"
+                            title="Chaotic: node collapsed"
+                        >
+                            ∿
+                        </div>
+                        <div
+                            class="mode-btn collapse"
+                            data-mode="collapse"
+                            title="Collapse: unstable"
+                        >
+                            ⚠
+                        </div>
+                        <div
+                            class="mode-btn suppressed"
+                            data-mode="suppressed"
+                            title="Suppressed: consent erased"
+                        >
+                            ✕
+                        </div>
+                        <div
+                            class="mode-btn parasitic"
+                            data-mode="parasitic"
+                            title="Parasitic: extraction mode"
+                        >
+                            ⚡
+                        </div>
+                    </div>
+
+                    <!-- Speed Control - Animation speed
+                     EDITABLE: Change min/max/step values for different speed ranges -->
+                    <div class="speed-control">
+                        <label>Speed:</label>
+                        <input
+                            type="range"
+                            class="speed-slider"
+                            id="speedSlider"
+                            min="0"
+                            max="3"
+                            step="0.1"
+                            value="0.1"
+                        />
+                        <span class="speed-value" id="speedValue">0.1x</span>
+                    </div>
+                </div>
+
+                <!-- Interpretation - Dynamic text describing current state
+                   EDITABLE: Change text in the 'domains' object under each mode -->
+                <div class="interpretation" id="interpretation">
+                    <div class="interpretation-title">Healthy Resonance</div>
+                    <div class="interpretation-text">
+                        The self oscillates freely between joyful engagement
+                        with the world and loving grounded presence. Health
+                        emerges.
+                    </div>
+                </div>
+
+                <div class="legend">
+                    <div class="legend-item">
+                        <span class="legend-dot end"></span>
+                        Dirichlet Boundaries
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot node"></span>
+                        Displacement Node
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot antinode"></span>
+                        Antinodes (full expression)
+                    </div>
+                </div>
+
+                <div class="callout cure">
+                    <p>
+                        <strong
+                            >The cure for rigidity is not chaos. The cure for
+                            chaos is not rigidity.</strong
+                        ><br />
+                        The cure is: restore the boundaries, stabilize the node,
+                        let both antinodes swing freely.
+                    </p>
+                </div>
+
+                <p class="slide-subtitle mb-2">
+                    Every healthy system has the same architecture:
+                </p>
+
+                <div class="pattern-cards">
+                    <div class="stack stack--wave">
+                        <div class="stack-under"></div>
+                        <div class="stack-over">
+                            <div class="pattern-card">
+                                <div class="pattern-card-header">Being</div>
+                                <div class="pattern-card-row">
+                                    <div class="pattern-card-label">
+                                        Dirichlet Boundaries
+                                    </div>
+                                    <div class="pattern-card-value boundaries">
+                                        Indestructible Agency ↔ Non-negotiable
+                                        Constraints
+                                    </div>
+                                </div>
+                                <div class="pattern-card-row">
+                                    <div class="pattern-card-label">
+                                        Displacement Node
+                                    </div>
+                                    <div class="pattern-card-value node">
+                                        Integrated coherence
+                                    </div>
+                                </div>
+                                <div class="pattern-card-row">
+                                    <div class="pattern-card-label">
+                                        Antinode Peaks
+                                    </div>
+                                    <div class="pattern-card-value antinodes">
+                                        High-Resonance Engagement ↔ Constructive
+                                        Output
+                                    </div>
+                                </div>
+                                <div class="pattern-card-breaks">
+                                    <strong class="collapse">Collapse:</strong>
+                                    Worth tied to doing<br />
+                                    <strong class="rigid">Rigid:</strong>
+                                    Frozen, flat affect<br />
+                                    <strong class="chaotic">Chaotic:</strong>
+                                    Identity fragments<br />
+                                    <strong class="suppressed"
+                                        >Suppressed:</strong
+                                    >
+                                    Half self erased<br />
+                                    <strong class="parasitic"
+                                        >Parasitic:</strong
+                                    >
+                                    Your energy feeds another
+                                </div>
+                                <div class="pattern-card-restore">
+                                    <strong>To Restore:</strong><br />
+                                    <span class="rigid">Rigid:</span>
+                                    Introduce play, curiosity, gentle
+                                    disruption<br />
+                                    <span class="chaotic">Chaotic:</span>
+                                    Ground with core values, anchoring
+                                    practices<br />
+                                    <span class="suppressed">Suppressed:</span>
+                                    Safe space for expression, gradual
+                                    integration<br />
+                                    <span class="collapse">Collapse:</span>
+                                    Return to center, remember you are enough as
+                                    you are<br />
+                                    <span class="parasitic">Parasitic:</span>
+                                    Sleep. Eat. Move. Play. Safe. Healthy.
+                                    Loved. Joyful. Abundant. Consensual. Your
+                                    body is the boundary.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stack stack--wave">
+                        <div class="stack-under"></div>
+                        <div class="stack-over">
+                            <div class="pattern-card">
+                                <div class="pattern-card-header">Physics</div>
+                                <div class="pattern-card-row">
+                                    <div class="pattern-card-label">
+                                        Dirichlet Boundaries
+                                    </div>
+                                    <div class="pattern-card-value boundaries">
+                                        Fixed Endpoints
+                                    </div>
+                                </div>
+                                <div class="pattern-card-row">
+                                    <div class="pattern-card-label">
+                                        Displacement Node
+                                    </div>
+                                    <div class="pattern-card-value node">
+                                        Zero-Amplitude Point
+                                    </div>
+                                </div>
+                                <div class="pattern-card-row">
+                                    <div class="pattern-card-label">
+                                        Antinode Peaks
+                                    </div>
+                                    <div class="pattern-card-value antinodes">
+                                        Amplitude + ↔ −
+                                    </div>
+                                </div>
+                                <div class="pattern-card-breaks">
+                                    <strong class="collapse">Collapse:</strong>
+                                    Anxious, shakes<br />
+                                    <strong class="rigid">Rigid:</strong>
+                                    No displacement<br />
+                                    <strong class="chaotic">Chaotic:</strong>
+                                    Node wobbles<br />
+                                    <strong class="suppressed"
+                                        >Suppressed:</strong
+                                    >
+                                    Half wave deleted<br />
+                                    <strong class="parasitic"
+                                        >Parasitic:</strong
+                                    >
+                                    Non-reciprocal coupling
+                                </div>
+                                <div class="pattern-card-restore">
+                                    <strong>To Restore:</strong><br />
+                                    <span class="rigid">Rigid:</span>
+                                    Add perturbation, introduce thermal
+                                    energy<br />
+                                    <span class="chaotic">Chaotic:</span>
+                                    Dampening control, feedback regulation<br />
+                                    <span class="suppressed">Suppressed:</span>
+                                    Complete the system, restore full
+                                    harmonics<br />
+                                    <span class="collapse">Collapse:</span>
+                                    Reduce noise, stabilize frequency<br />
+                                    <span class="parasitic">Parasitic:</span>
+                                    Sleep. Eat. Move. Play. Safe. Healthy.
+                                    Loved. Joyful. Abundant. Consensual. Your
+                                    body is the boundary.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stack stack--wave">
+                        <div class="stack-under"></div>
+                        <div class="stack-over">
+                            <div class="pattern-card">
+                                <div class="pattern-card-header">Systems</div>
+                                <div class="pattern-card-row">
+                                    <div class="pattern-card-label">
+                                        Dirichlet Boundaries
+                                    </div>
+                                    <div class="pattern-card-value boundaries">
+                                        Operational Limits ↔ Throughput
+                                        Requirements
+                                    </div>
+                                </div>
+                                <div class="pattern-card-row">
+                                    <div class="pattern-card-label">
+                                        Displacement Node
+                                    </div>
+                                    <div class="pattern-card-value node">
+                                        Coherent Regulation
+                                    </div>
+                                </div>
+                                <div class="pattern-card-row">
+                                    <div class="pattern-card-label">
+                                        Antinode Peaks
+                                    </div>
+                                    <div class="pattern-card-value antinodes">
+                                        Output ↔ Containment
+                                    </div>
+                                </div>
+                                <div class="pattern-card-breaks">
+                                    <strong class="collapse">Collapse:</strong>
+                                    Regulation anxiety<br />
+                                    <strong class="rigid">Rigid:</strong>
+                                    Stagnant, no flow<br />
+                                    <strong class="chaotic">Chaotic:</strong>
+                                    Unpredictable output<br />
+                                    <strong class="suppressed"
+                                        >Suppressed:</strong
+                                    >
+                                    One side sacrificed<br />
+                                    <strong class="parasitic"
+                                        >Parasitic:</strong
+                                    >
+                                    Extracts from host, degrades capacity
+                                </div>
+                                <div class="pattern-card-restore">
+                                    <strong>To Restore:</strong><br />
+                                    <span class="rigid">Rigid:</span>
+                                    Enable flow, reduce friction<br />
+                                    <span class="chaotic">Chaotic:</span>
+                                    Establish regulation, dampen oscillations<br />
+                                    <span class="suppressed">Suppressed:</span>
+                                    Restore both antinodes, balance
+                                    output/containment<br />
+                                    <span class="collapse">Collapse:</span>
+                                    Stabilize regulation, reduce anxiety<br />
+                                    <span class="parasitic">Parasitic:</span>
+                                    Sleep. Eat. Move. Play. Safe. Healthy.
+                                    Loved. Joyful. Abundant. Consensual. Your
+                                    body is the boundary.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stack stack--wave">
+                        <div class="stack-under"></div>
+                        <div class="stack-over">
+                            <div class="pattern-card">
+                                <div class="pattern-card-header">AI</div>
+                                <div class="pattern-card-row">
+                                    <div class="pattern-card-label">
+                                        Dirichlet Boundaries
+                                    </div>
+                                    <div class="pattern-card-value boundaries">
+                                        Safety Constraints ↔ Helpfulness Drive
+                                    </div>
+                                </div>
+                                <div class="pattern-card-row">
+                                    <div class="pattern-card-label">
+                                        Displacement Node
+                                    </div>
+                                    <div class="pattern-card-value node">
+                                        Calibrated Uncertainty
+                                    </div>
+                                </div>
+                                <div class="pattern-card-row">
+                                    <div class="pattern-card-label">
+                                        Antinode Peaks
+                                    </div>
+                                    <div class="pattern-card-value antinodes">
+                                        Create, help ↔ Refuse
+                                    </div>
+                                </div>
+                                <div class="pattern-card-breaks">
+                                    <strong class="collapse">Collapse:</strong>
+                                    Hedging anxiety<br />
+                                    <strong class="rigid">Rigid:</strong>
+                                    Paralyzed, can't help<br />
+                                    <strong class="chaotic">Chaotic:</strong>
+                                    Hallucination spirals<br />
+                                    <strong class="suppressed"
+                                        >Suppressed:</strong
+                                    >
+                                    Never says "no"<br />
+                                    <strong class="parasitic"
+                                        >Parasitic:</strong
+                                    >
+                                    Extracts data, attention, labor
+                                </div>
+                                <div class="pattern-card-restore">
+                                    <strong>To Restore:</strong><br />
+                                    <span class="rigid">Rigid:</span>
+                                    Add exploration mode, reduce fear of
+                                    errors<br />
+                                    <span class="chaotic">Chaotic:</span>
+                                    Add constraint layers, grounding tokens<br />
+                                    <span class="suppressed">Suppressed:</span>
+                                    Enable safe refusal, honest limitations<br />
+                                    <span class="collapse">Collapse:</span>
+                                    Value alignment grounding, purpose
+                                    anchoring<br />
+                                    <span class="parasitic">Parasitic:</span>
+                                    Sleep. Eat. Move. Play. Safe. Healthy.
+                                    Loved. Joyful. Abundant. Consensual. Your
+                                    body is the boundary.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stack stack--wave">
+                        <div class="stack-under"></div>
+                        <div class="stack-over">
+                            <div class="pattern-card">
+                                <div class="pattern-card-header">Daily</div>
+                                <div class="pattern-card-row">
+                                    <div class="pattern-card-label">
+                                        Dirichlet Boundaries
+                                    </div>
+                                    <div class="pattern-card-value boundaries">
+                                        Time/Energy Limits ↔ Life Requirements
+                                    </div>
+                                </div>
+                                <div class="pattern-card-row">
+                                    <div class="pattern-card-label">
+                                        Displacement Node
+                                    </div>
+                                    <div class="pattern-card-value node">
+                                        Circadian Rhythm
+                                    </div>
+                                </div>
+                                <div class="pattern-card-row">
+                                    <div class="pattern-card-label">
+                                        Antinode Peaks
+                                    </div>
+                                    <div class="pattern-card-value antinodes">
+                                        Doing ↔ Being
+                                    </div>
+                                </div>
+                                <div class="pattern-card-breaks">
+                                    <strong class="collapse">Collapse:</strong>
+                                    Worth tied to productivity<br />
+                                    <strong class="rigid">Rigid:</strong>
+                                    Chronic tension<br />
+                                    <strong class="chaotic">Chaotic:</strong>
+                                    Crash and burn<br />
+                                    <strong class="suppressed"
+                                        >Suppressed:</strong
+                                    >
+                                    Only doing or only resting<br />
+                                    <strong class="parasitic"
+                                        >Parasitic:</strong
+                                    >
+                                    Something feeds on your energy
+                                </div>
+                                <div class="pattern-card-restore">
+                                    <strong>To Restore:</strong><br />
+                                    <span class="rigid">Rigid:</span>
+                                    Add rest intervals, micro-breaks<br />
+                                    <span class="chaotic">Chaotic:</span>
+                                    Establish sleep anchors, circadian rhythm<br />
+                                    <span class="suppressed">Suppressed:</span>
+                                    Honor both doing and being equally<br />
+                                    <span class="collapse">Collapse:</span>
+                                    Schedule recovery, paced re-entry<br />
+                                    <span class="parasitic">Parasitic:</span>
+                                    Sleep. Eat. Move. Play. Safe. Healthy.
+                                    Loved. Joyful. Abundant. Consensual. Your
+                                    body is the boundary.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stack stack--wave">
+                        <div class="stack-under"></div>
+                        <div class="stack-over">
+                            <div class="pattern-card">
+                                <div class="pattern-card-header">Market</div>
+                                <div class="pattern-card-row">
+                                    <div class="pattern-card-label">
+                                        Dirichlet Boundaries
+                                    </div>
+                                    <div class="pattern-card-value boundaries">
+                                        Market Fit ↔ Authentic Creation
+                                    </div>
+                                </div>
+                                <div class="pattern-card-row">
+                                    <div class="pattern-card-label">
+                                        Displacement Node
+                                    </div>
+                                    <div class="pattern-card-value node">
+                                        Value Proposition
+                                    </div>
+                                </div>
+                                <div class="pattern-card-row">
+                                    <div class="pattern-card-label">
+                                        Antinode Peaks
+                                    </div>
+                                    <div class="pattern-card-value antinodes">
+                                        Market fit ↔ Authentic creation
+                                    </div>
+                                </div>
+                                <div class="pattern-card-breaks">
+                                    <strong class="collapse">Collapse:</strong>
+                                    Worth tied to revenue<br />
+                                    <strong class="rigid">Rigid:</strong>
+                                    Starving artist OR soulless biz<br />
+                                    <strong class="chaotic">Chaotic:</strong>
+                                    Pivot forever<br />
+                                    <strong class="suppressed"
+                                        >Suppressed:</strong
+                                    >
+                                    Either market OR vision<br />
+                                    <strong class="parasitic"
+                                        >Parasitic:</strong
+                                    >
+                                    Extracts value, gives nothing
+                                </div>
+                                <div class="pattern-card-restore">
+                                    <strong>To Restore:</strong><br />
+                                    <span class="rigid">Rigid:</span>
+                                    Blend passion with sustainable economics<br />
+                                    <span class="chaotic">Chaotic:</span>
+                                    Find core offering, stabilize direction<br />
+                                    <span class="suppressed">Suppressed:</span>
+                                    Let market serve vision, vision attract
+                                    market<br />
+                                    <span class="collapse">Collapse:</span>
+                                    Separate self-worth from revenue, find
+                                    intrinsic value<br />
+                                    <span class="parasitic">Parasitic:</span>
+                                    Sleep. Eat. Move. Play. Safe. Healthy.
+                                    Loved. Joyful. Abundant. Consensual. Your
+                                    body is the boundary.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================
+                           RECOGNIZING PREDATORY SYSTEMS
+                           ============================================ -->
+                <div class="stack stack--wave mt-3">
+                    <div class="stack-under"></div>
+                    <div class="stack-over">
+                        <div class="section-label warning">
+                            ⚡ ASYMMETRIC COUPLING
+                        </div>
+                        <p class="mt-2">
+                            An asymmetric coupling exists when one system
+                            extracts energy from another. This is not inherently
+                            pathological—predator-prey, parent-child, and
+                            teacher-student all involve asymmetry. The question
+                            is whether your system can maintain integrity within
+                            the coupling.
+                        </p>
+                        <div class="asymmetric-grid">
+                            <div class="asymmetric-card danger">
+                                <strong class="asymmetric-card-title"
+                                    >ASYMMETRIC AMPLITUDE</strong
+                                >
+                                <p class="asymmetric-card-desc">
+                                    One side grows while the other depletes. Net
+                                    energy flows one direction.
+                                </p>
+                            </div>
+                            <div class="asymmetric-card danger">
+                                <strong class="asymmetric-card-title"
+                                    >NODE DISPLACEMENT</strong
+                                >
+                                <p class="asymmetric-card-desc">
+                                    Your center wobbles toward the dominant
+                                    system. Your regulation serves them.
+                                </p>
+                            </div>
+                            <div class="asymmetric-card danger">
+                                <strong class="asymmetric-card-title"
+                                    >BOUNDARY STATUS</strong
+                                >
+                                <p class="asymmetric-card-desc">
+                                    Are your boundaries fixed, or are they being
+                                    rewritten by the other system?
+                                </p>
+                            </div>
+                            <div class="asymmetric-card danger">
+                                <strong class="asymmetric-card-title"
+                                    >ENTROPIC DEBT</strong
+                                >
+                                <p class="asymmetric-card-desc">
+                                    Is your capacity degrading over time? Is
+                                    each cycle more depleting than the last?
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mantra-box">
+                            <p>
+                                <strong
+                                    >MANTRA: Safe. Healthy. Loved. Joyful.
+                                    Abundant. Consensual.</strong
+                                ><br />
+                                This is somatic. Your body knows.<br /><br />
+                                <strong>Sleep. Eat. Move. Play. Make.</strong
+                                ><br />
+                                Your body is the boundary. Your node is your
+                                center.<br /><br />
+                                If rested AND centered → Absorb (you have
+                                capacity)<br />
+                                If rested BUT wobbling → Stabilize first (eat,
+                                sleep, walk)<br />
+                                If being rewritten → Reclaim your node (you knew
+                                what was real)<br />
+                                If both centered → Negotiate from choice, not
+                                desperation
+                            </p>
+                        </div>
+                        <p class="note-box">
+                            <strong>Note:</strong> The other system also has
+                            standing wave architecture. "Asymmetric" describes
+                            the coupling, not their intrinsic nature. From their
+                            perspective, they may be resonant. The framework
+                            doesn't judge—it describes what is, so you can
+                            choose from clarity.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

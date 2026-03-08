@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Crawl-delay: 2
+
+Sitemap: https://the-eco.art/sitemap.xml
