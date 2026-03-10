@@ -1603,7 +1603,7 @@ body.carousel-mode {
     width: 100%;
     height: calc(100% - 90px);
     /* 100% - (nav 50px + footer 40px) */
-    overflow: visible;
+    overflow: hidden;
     z-index: 0;
     background: transparent;
 }
@@ -1638,8 +1638,8 @@ body.carousel-mode {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding: 20px;
-    padding-top: 30px;
+    padding: 40px 20px;
+    padding-top: 60px; /* Safe buffer for fixed nav */
     box-sizing: border-box;
     overflow-y: auto;
     background: transparent;
@@ -1657,10 +1657,12 @@ body.carousel-mode {
 
 .carousel-slide > .container > .stack {
     width: 100%;
-    height: auto;
+    height: 100%;
     min-height: 100%;
     overflow-y: visible;
     background: transparent;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ========================================
@@ -2097,9 +2099,10 @@ body.carousel-mode .wave-wire--small {
    ======================================== */
 .interactive-story-container {
     position: relative;
-    display: flex;
-    flex-direction: row;
+    display: flex !important;
+    flex-direction: row !important;
     align-items: flex-start;
+    width: 100%;
     height: auto;
     min-height: 500px;
     gap: var(--space-xl);
@@ -2108,12 +2111,13 @@ body.carousel-mode .wave-wire--small {
 
 .sticky-canvas-wrapper {
     position: sticky;
-    top: 10vh;
+    top: 50px; /* Offset for nav */
     width: 60%;
-    height: 70vh;
+    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .sticky-canvas-wrapper .wave-container {
@@ -2196,8 +2200,8 @@ body.carousel-mode .wave-wire--small {
 
     /* ---- SCROLLYTELLING CONTAINER: Vertical stack ---- */
     .interactive-story-container {
-        display: flex;
-        flex-direction: column;
+        display: flex !important;
+        flex-direction: column !important;
         position: relative;
         height: auto;
         min-height: auto;
